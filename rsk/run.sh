@@ -36,11 +36,11 @@ if [ $TESTNET == true ]; then
   echo "Starting rsk testnet"
   /usr/bin/java -Dlogback.configurationFile=$LOG_CONFIG \
 	-Drsk.conf.file=$NODE_CONFIG \
-	-cp /usr/share/rsk/rsk.jar co.rsk.Start > /dev/null 2>&1
+	-cp /usr/share/rsk/rsk.jar co.rsk.Start 
 else
   echo "Starting rsk mainnet"
   /usr/bin/java -Dlogback.configurationFile=$LOG_CONFIG \
 	-Drsk.conf.file=$NODE_CONFIG \
-	-cp /usr/share/rsk/rsk.jar co.rsk.Start > /dev/null 2>&1
+	-cp /usr/share/rsk/rsk.jar co.rsk.Start 
 fi
 
