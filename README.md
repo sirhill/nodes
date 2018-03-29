@@ -1,7 +1,7 @@
 Mt Pelerin nodes configuration
 ======
 
-## Currencies covered
+## Network covered
 
 * Bitcoin - BTC
 * Ethereum - ETH
