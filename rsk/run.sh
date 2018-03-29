@@ -29,8 +29,15 @@ if [ ! -f "$NODE_CONFIG" ]; then
   else
     cp /root/node.MainNet.conf $NODE_CONFIG
   fi
-fi
 
+  echo "Setting the node private key"
+  /usr/bin/java -cp /usr/share/rsk/rsk.jar co.rsk.GenNodeKeyId > $DATA_DIR/node_keys.json
+  NODE_PKEY=`grep privateKey $DATA_DIR/node_keys.json | cut -d'"' -f4`
+  sed -i -e 's/<PRIVATE_KEY>/'$NODE_PKEY'/' $NODE_CONFIG
+
+  NODE_ID=`grep nodeId $DATA_DIR/node_keys.json | cut -d'"' -f4`
+  sed -i -e 's/<NODE_ID>/'$NODE_ID'/' $NODE_CONFIG
+fi
 
 if [ $TESTNET == true ]; then
   echo "Starting rsk testnet"
