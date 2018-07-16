@@ -7,7 +7,7 @@ FROM ubuntu:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends openjdk-8-jre supervisor python-software-properties software-properties-common
+RUN apt-get install -y --no-install-recommends openjdk-8-jre systemd supervisor software-properties-common
 
 # optional
 RUN apt-get install -y less bash vim git
