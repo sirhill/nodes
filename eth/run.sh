@@ -4,7 +4,7 @@ echo -e "================  VARIABLES  ===================
       DATA_DIR=${DATA_DIR:="/ethereum/"}
       API_ALLOWED=${API_ALLOWED:="eth,miner,net,web3,personal,txpool"}
       MAX_PEERS=${MAX_PEERS:=25}
-      VERBOSITY=${VERBOSITY:=3}
+      VERBOSITY=${VERBOSITY:=1}
       TESTNET=${TESTNET:=false}"
 echo "================================================="
 
@@ -27,6 +27,7 @@ else
   GETH_OPTS="$GETH_OPTS --networkid=1 "
 fi
 
+NODE_LOG="$DATADIR/node.log"
 
 GETH_OPTS="$GETH_OPTS --syncmode=full
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
@@ -35,5 +36,5 @@ GETH_OPTS="$GETH_OPTS --syncmode=full
           --datadir=$DATA_DIR
           --verbosity=$VERBOSITY"
 echo "geth $GETH_OPTS"
-geth $GETH_OPTS
+geth $GETH_OPTS 2>&1 >$NODE_LOG
 

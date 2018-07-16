@@ -39,15 +39,17 @@ if [ ! -f "$NODE_CONFIG" ]; then
   sed -i -e 's/<NODE_ID>/'$NODE_ID'/' $NODE_CONFIG
 fi
 
+NODE_LOG=$DATA_DIR/node.log
+
 if [ $TESTNET == true ]; then
   echo "Starting rsk testnet"
   /usr/bin/java -Dlogback.configurationFile=$LOG_CONFIG \
 	-Drsk.conf.file=$NODE_CONFIG \
-	-cp /usr/share/rsk/rsk.jar co.rsk.Start 
+	-cp /usr/share/rsk/rsk.jar co.rsk.Start 2>&1 >$NODE_LOG
 else
   echo "Starting rsk mainnet"
   /usr/bin/java -Dlogback.configurationFile=$LOG_CONFIG \
 	-Drsk.conf.file=$NODE_CONFIG \
-	-cp /usr/share/rsk/rsk.jar co.rsk.Start 
+	-cp /usr/share/rsk/rsk.jar co.rsk.Start 2>&1 >$NODE_LOG
 fi
 

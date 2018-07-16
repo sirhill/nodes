@@ -23,11 +23,13 @@ if [ $STDOUT == true ]; then
   ARGS="$ARGS -printtoconsole"
 fi
 
+NODE_LOG=$DATA_DIR/node.log
+
 if [ $TESTNET == true ]; then
   echo "Starting bitcoin testnet"
-  bitcoind $ARGS -datadir=$DATA_DIR -testnet -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD
+  bitcoind $ARGS -datadir=$DATA_DIR -testnet -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD 2>&1 >$NODE_LOG
 else
   echo "Starting bitcoin mainnet"
-  bitcoind $ARGS -datadir=$DATA_DIR -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD
+  bitcoind $ARGS -datadir=$DATA_DIR -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD 2>&1 >$NODE_LOG
 fi
 

@@ -1,5 +1,5 @@
 # Image definition
-FROM alpine:3.6
+FROM alpine:3.8
 RUN apk add --update bash vim less git
 RUN apk add --update make g++ linux-headers go
 WORKDIR /root
