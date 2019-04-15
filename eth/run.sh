@@ -1,20 +1,19 @@
 #!/bin/bash
 
-${TESTNET:=false}
-if [ "$TESTNET" == true ]; then
-  ${NETWORK_ID:=3}
-else
-  ${NETWORK_ID:=1}
-fi
-
 echo -e "================  VARIABLES  ===================
       DATA_DIR=${DATA_DIR:="/ethereum/"}
       API_ALLOWED=${API_ALLOWED:="eth,miner,net,web3,personal,txpool"}
       MAX_PEERS=${MAX_PEERS:=25}
       VERBOSITY=${VERBOSITY:=1}
-      TESTNET=${TESTNET}
-      DEV_MODE=${DEV_MODE:=false}
-      NETWORK_ID=${NETWORK_ID}"
+      TESTNET=${TESTNET:=false}
+      DEV_MODE=${DEV_MODE:=false}"
+
+if [ $TESTNET == true ]; then
+  echo -e "      NETWORK_ID=${NETWORK_ID:=3}"
+else
+  echo -e "      NETWORK_ID=${NETWORK_ID:=1}"
+fi
+
 echo "================================================="
 
 if [ "x$DATA_DIR" == "x" ]; then
