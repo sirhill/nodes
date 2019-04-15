@@ -38,7 +38,7 @@ NODE_LOG="$DATADIR/node.log"
 GETH_OPTS="$GETH_OPTS --syncmode=full --gcmode=archive
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
           --ws --wsaddr=0.0.0.0 --wsapi=$API_ALLOWED --wsorigins=*
-          --maxpeers=$MAX_PEERS --cache=512
+          --maxpeers=$MAX_PEERS --cache=2048
           --datadir=$DATA_DIR
           --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
