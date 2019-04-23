@@ -1,4 +1,4 @@
-Mt Pelerin nodes configuration
+Nodes configuration
 ======
 
 ## Network covered
