@@ -6,6 +6,8 @@ echo -e "================  VARIABLES  ===================
       MAX_PEERS=${MAX_PEERS:=25}
       VERBOSITY=${VERBOSITY:=1}
       TESTNET=${TESTNET:=false}
+      GCMODE=${GCMODE:=full}
+      SYNCMODE=${SYNCMODE:=fast}
       DEV_MODE=${DEV_MODE:=false}"
 
 if [ $TESTNET == true ]; then
@@ -41,7 +43,7 @@ fi
 
 NODE_LOG="$DATADIR/node.log"
 
-GETH_OPTS="$GETH_OPTS --syncmode=full --gcmode=archive
+GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
           --ws --wsaddr=0.0.0.0 --wsapi=$API_ALLOWED --wsorigins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=2048 --nousb

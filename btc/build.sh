@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo docker build -t mtpelerin/node-bitcoin .
+sudo docker build -t sirhill/node-bitcoin .
 
