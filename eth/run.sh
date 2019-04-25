@@ -41,7 +41,7 @@ if [ $DEV_MODE == true ]; then
   GETH_OPTS="$GETH_OPTS --dev "
 fi
 
-NODE_LOG="$DATADIR/node.log"
+NODE_LOG="$DATA_DIR/node.log"
 
 GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
