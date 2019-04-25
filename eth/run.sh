@@ -47,6 +47,7 @@ GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
           --ws --wsaddr=0.0.0.0 --wsapi=$API_ALLOWED --wsorigins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=2048 --nousb
+          --lightpeers=0
           --datadir=$DATA_DIR
           --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
