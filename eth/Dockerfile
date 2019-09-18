@@ -1,5 +1,5 @@
 # Image definition
-FROM alpine:3.8
+FROM alpine:3.10
 RUN apk add --update bash vim less git
 RUN apk add --update make g++ linux-headers go
 WORKDIR /root
@@ -7,7 +7,7 @@ WORKDIR /root
 # Geth
 RUN git clone https://github.com/ethereum/go-ethereum.git
 RUN cd go-ethereum &&\
-    git checkout release/1.8 &&\
+    git checkout release/1.9 &&\
     make all
 ENV PATH=$PATH:/root/go-ethereum/build/bin
 
