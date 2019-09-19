@@ -2,7 +2,7 @@
 
 echo -e "================  VARIABLES  ===================
       DATA_DIR=${DATA_DIR:="/ethereum/"}
-      FREEZER_DIR=${FREEZER_DIR:="/ethereum/"}
+      FREEZER_DIR=${FREEZER_DIR:="/ethereum/freezer"}
       API_ALLOWED=${API_ALLOWED:="eth,miner,net,web3,personal,txpool"}
       MAX_PEERS=${MAX_PEERS:=50}
       VERBOSITY=${VERBOSITY:=1}
