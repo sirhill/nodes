@@ -49,7 +49,7 @@ GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --rpc --rpcaddr=0.0.0.0 --rpcapi=$API_ALLOWED --rpccorsdomain='*'
           --ws --wsaddr=0.0.0.0 --wsapi=$API_ALLOWED --wsorigins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
-          --lightpeers=0
+          --lightpeers=0 --nousb
           --datadir=$DATA_DIR --datadir.ancient=$FREEZER_DIR
           --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
