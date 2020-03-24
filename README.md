@@ -4,6 +4,6 @@ Nodes configuration
 ## Network covered
 
 * Bitcoin - BTC
-* Ethereum - ETH
+* Ethereum - ETH 
 * Rootstock - RSK
 
