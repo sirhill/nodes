@@ -8,26 +8,15 @@ echo -e "================  VARIABLES  ===================
       API_ALLOWED=${API_ALLOWED:="eth,net,web3"}
       MAX_PEERS=${MAX_PEERS:=50}
       VERBOSITY=${VERBOSITY:=1}
-      NETWORK=${NETWORK:=mainnet}
+      TESTNET=${TESTNET:=false}
       GCMODE=${GCMODE:=full}
       SYNCMODE=${SYNCMODE:=fast}
       CACHE=${CACHE:=2048}
       DEV_MODE=${DEV_MODE:=false}"
 
-if [ $NETWORK == "ropsten" ]; then
-  echo "Using ropsten config..."
-  GETH_OPTS="$GETH_OPTS --testnet "
+if [ $TESTNET == true ]; then
   echo -e "      NETWORK_ID=${NETWORK_ID:=3}"
-elif [ $NETWORK == "rinkeby" ]; then
-  echo "Using rinkeby config..."
-  GETH_OPTS="$GETH_OPTS --rinkeby "
-  echo -e "      NETWORK_ID=${NETWORK_ID:=4}"
-elif [ $NETWORK == "goerli" ]; then
-  echo "Using goerli config..."
-  GETH_OPTS="$GETH_OPTS --goerli "
-  echo -e "      NETWORK_ID=${NETWORK_ID:=5}"
 else
-  echo "Using mainnet config..."
   echo -e "      NETWORK_ID=${NETWORK_ID:=1}"
 fi
 
@@ -43,13 +32,17 @@ if [ ! -d $DATA_DIR ]; then
   mkdir $DATA_DIR
 fi
 
-if [ $DEV_MODE == true ]; then
-  GETH_OPTS="$GETH_OPTS --dev "
+if [ $TESTNET == true ]; then
+  echo "Starting ropsten..."
+
+  GETH_OPTS="$GETH_OPTS --testnet "
+else 
+  echo "Starting mainnet..."
+  GETH_OPTS="$GETH_OPTS "
 fi
 
-if [ "x$BOOT_NODES" != "x" ]; then
-  echo -e "      BOOT_NODES=${BOOT_NODES}"
-  GETH_OPTS="$GETH_OPTS --bootnodes='$BOOT_NODES'"
+if [ $DEV_MODE == true ]; then
+  GETH_OPTS="$GETH_OPTS --dev "
 fi
 
 NODE_LOG="$DATA_DIR/node.log"
@@ -60,7 +53,7 @@ GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
           --lightpeers=0 --nousb
           --datadir=$DATA_DIR --datadir.ancient=$FREEZER_DIR
-          --network=$NETWORK --networkid=$NETWORK_ID
+          --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
 echo "geth $GETH_OPTS"
 geth $GETH_OPTS 2>&1 >$NODE_LOG

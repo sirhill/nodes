@@ -1,0 +1,47 @@
+version: '3'
+
+networks:
+  internalnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.1.0/16
+services:
+  eth-poa-01:
+    image: sirhill/node-eth
+    restart: on-failure
+    container_name: eth-poa-01
+    hostname: eth-poa-01
+    volumes:
+      - /data/ethereum/eth-poa-01:/ethereum
+    expose:
+      - "8545"
+      - "8546"
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+    networks:
+      internalnet:
+        ipv4_address: 172.21.1.2
+    environment:
+      - NETWORK_ID=20200507
+      - GETH_OPTS=--nodiscover --miner.gasprice=1 --allow-insecure-unlock --unlock=0xbf518cd53a0badf3ce00f78fd268d47fb7cb78c8 --password /ethereum/password.txt --mine --minerthreads=1 --maxpeers=0
+  eth-poa-02:
+    image: sirhill/node-eth
+    restart: on-failure
+    container_name: eth-poa-02
+    hostname: eth-poa-02
+    volumes:
+      - /data/ethereum/eth-poa-02:/ethereum
+    expose:
+      - "8545"
+      - "8546"
+    ports:
+      - "30304:30303"
+      - "30304:30303/udp"
+    networks:
+      internalnet:
+        ipv4_address: 172.21.1.3
+    environment:
+      - NETWORK_ID=20200507
+      - GETH_OPTS=--nodiscover --miner.gasprice=1 --allow-insecure-unlock --unlock=0x39a62e22f6d34d698326479416c5c9fcb57fe2f5 --password /ethereum/password.txt --mine --minerthreads=1 --maxpeers=0
