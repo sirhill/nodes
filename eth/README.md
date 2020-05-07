@@ -1,5 +1,5 @@
 
-# HowTo create a Proof of Authoriity network
+# HowTo create a Proof of Authority network
 
 1. Create the two nodes directory (on dedicated a volume ideally)
 
