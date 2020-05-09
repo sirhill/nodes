@@ -60,7 +60,7 @@ GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
           --lightpeers=0 --nousb
           --datadir=$DATA_DIR --datadir.ancient=$FREEZER_DIR
-          --network=$NETWORK --networkid=$NETWORK_ID
+          --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
 echo "geth $GETH_OPTS"
 geth $GETH_OPTS 2>&1 >$NODE_LOG
