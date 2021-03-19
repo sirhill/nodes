@@ -55,10 +55,9 @@ fi
 NODE_LOG="$DATA_DIR/node.log"
 
 GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
-          --rpc --rpcaddr=$AUTHORIZED_IP --rpcapi=$API_ALLOWED --rpccorsdomain='*'
-          --ws --wsaddr=$AUTHORIZED_IP --wsapi=$API_ALLOWED --wsorigins=*
+          --ws --ws.addr=$AUTHORIZED_IP --ws.api=$API_ALLOWED --ws.origins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
-          --lightpeers=0 --nousb
+          --light.peers=0 --nousb
           --datadir=$DATA_DIR --datadir.ancient=$FREEZER_DIR
           --networkid=$NETWORK_ID
           --verbosity=$VERBOSITY"
