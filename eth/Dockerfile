@@ -7,7 +7,7 @@ WORKDIR /root
 # Geth
 RUN git clone https://github.com/ethereum/go-ethereum.git
 RUN cd go-ethereum &&\
-    git checkout release/1.9 &&\
+    git checkout release/1.10 &&\
     make all
 ENV PATH=$PATH:/root/go-ethereum/build/bin
 
