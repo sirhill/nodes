@@ -11,6 +11,7 @@ echo -e "================  VARIABLES  ===================
       NETWORK=${NETWORK:=mainnet}
       GCMODE=${GCMODE:=full}
       SYNCMODE=${SYNCMODE:=fast}
+      TX_LOOKUP_LIMIT=${TX_LOOKUP_LIMIT:=0}
       CACHE=${CACHE:=2048}
       DEV_MODE=${DEV_MODE:=false}"
 
@@ -54,7 +55,7 @@ fi
 
 NODE_LOG="$DATA_DIR/node.log"
 
-GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE
+GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE --txlookuplimit=$TX_LOOKUP_LIMMIT
           --http --http.addr=$AUTHORIZED_IP --http.api=$API_ALLOWED --http.corsdomain='*'
           --ws --ws.addr=$AUTHORIZED_IP --ws.api=$API_ALLOWED --ws.origins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
