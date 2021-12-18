@@ -55,7 +55,7 @@ fi
 
 NODE_LOG="$DATA_DIR/node.log"
 
-GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE --txlookuplimit=$TX_LOOKUP_LIMMIT
+GETH_OPTS="$GETH_OPTS --syncmode=$SYNCMODE --gcmode=$GCMODE --txlookuplimit=$TX_LOOKUP_LIMIT
           --http --http.addr=$AUTHORIZED_IP --http.api=$API_ALLOWED --http.corsdomain='*'
           --ws --ws.addr=$AUTHORIZED_IP --ws.api=$API_ALLOWED --ws.origins=*
           --maxpeers=$MAX_PEERS --maxpendpeers=$MAX_PEERS --cache=$CACHE --nousb
