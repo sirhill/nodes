@@ -23,6 +23,10 @@ elif [ $NETWORK == "rinkeby" ]; then
   echo "Using rinkeby config..."
   GETH_OPTS="$GETH_OPTS --rinkeby "
   echo -e "      NETWORK_ID=${NETWORK_ID:=4}"
+elif [ $NETWORK == "sepolia" ]; then
+  echo "Using rinkeby config..."
+  GETH_OPTS="$GETH_OPTS --sepolia "
+  echo -e "      NETWORK_ID=${NETWORK_ID:=11155111}"
 elif [ $NETWORK == "goerli" ]; then
   echo "Using goerli config..."
   GETH_OPTS="$GETH_OPTS --goerli "
